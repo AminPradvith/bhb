@@ -1,0 +1,21 @@
+<template>
+  <div class="recruitment-info">
+    <template if:true={jobData}>
+      <h2>{jobData.role}</h2>
+      <p>{jobData.location}</p>
+      <div class="description">{jobData.description}</div>
+      <button label="Apply Now" onclick={handleApplyClick}></button>
+    </template>
+    <template if:false={jobData}>
+      <p>Loading...</p>
+    </template>
+  </div>
+  <div class="application-form" if:true={showForm}>
+    <h2>Application Form</h2>
+    <lightning-input label="Name" name="name" required></lightning-input>
+    <lightning-input label="Phone Number" name="phone" type="phone" required></lightning-input>
+    <lightning-input label="Email" name="email" type="email" required></lightning-input>
+    <lightning-file-upload label="Resume" name="resume" accept=".pdf,.docx"></lightning-file-upload>
+    <button label="Save" onclick={handleSaveClick}></button>
+  </div>
+</template>
